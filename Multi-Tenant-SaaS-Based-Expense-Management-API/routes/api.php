@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // Authentication
-Route::post('register', [AuthController::class, 'register'])->middleware('adminsOnly');
+Route::post('register', [AuthController::class, 'register'])->middleware('admin:Admin');
 Route::post('login', [AuthController::class, 'login']);
 
 #### Expense Management
@@ -25,5 +25,3 @@ Route::middleware(['auth:sanctum', 'admin:Admin'])->group(function(){
     Route::post('users', [AuthController::class, 'register']);
     Route::put('users/{id}', [AuthController::class, 'update']); // Update user role (Admins only)
 });
-
-// Route::get('users', [AuthController::class, 'index']);

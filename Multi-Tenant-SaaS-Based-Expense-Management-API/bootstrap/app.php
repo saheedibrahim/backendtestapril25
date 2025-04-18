@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Middleware\Admin;
-use App\Http\Middleware\AdminsOnly;
 use App\Http\Middleware\Authenticated;
 use App\Http\Middleware\isAdminOrManager;
-use App\Http\Middleware\Manager;
-use App\Http\Middleware\RoleManager;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -21,7 +18,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'authUser' => Authenticated::class,
             'admin' => Admin::class,
-            'manager' => Manager::class,
             'admin_or_manager' => isAdminOrManager::class
         ]);
     })
